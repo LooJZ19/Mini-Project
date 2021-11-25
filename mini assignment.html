@@ -1,0 +1,68 @@
+<html>
+    <head>
+    <title>Guess number</title>
+    </head>
+    <body style='background-color: 657ced;'>
+        <h1>Guess number from 0 between 100</h1>
+        <!--number box-->
+        Guess Number :<input type='number' id='guessfield' placeholder="Number">
+        <!--Submit button-->
+        <input type='submit' value='Submit Guess' onclick='myguess()' >
+        <h2>Result:</h2>
+        <hr>
+
+
+        <p id="message1">No. Of Guesses: 0</p>
+        <p id="message2">Guessed Numbers are: None</p>
+        <p id="message3"></p>
+        
+
+
+    <script>
+        var random = Math.round(Math.random()*100);
+        guess = 0;
+        guessed_nums = [];
+        //alert(random);
+        
+        
+        function myguess(){
+            var myguess = document.getElementById("guessfield").value;
+            if(myguess < 1 || myguess > 100){
+                alert("Please enter a number between 1 and 100.");
+            }
+
+            else{
+                guessed_nums.push(myguess);
+                guess+= 1;
+            
+                
+                if(myguess < random ){
+                    msg1.textContent = "Your guess is too low.";
+                    msg2.textContent = "No. of guesses: " + guess;
+                    msg3.textContent = "Guessed numbers are: " +
+                    guessed_nums;
+                }
+
+                else if(myguess > random){
+                    msg1.textContent = "Your guess is too high.";
+                    msg2.textContent = "No. of guesses: " + guess;
+                    msg3.textContent = "Guessed numbers are: " +
+                    guessed_nums;
+                }
+
+                else if(myguess == random){
+                    msg1.textContent = "Conguatulation! You Win!";
+                    msg2.textContent = "The number was: " + answer;
+                    msg3.textContent = "You guessed it in "+ guess + " guesses";
+                }
+            }
+         
+        }
+
+        var msg1 = document.getElementById("message1");
+        var msg2 = document.getElementById("message2");
+        var msg3 = document.getElementById("message3");
+                   
+    </script>
+    </body>
+</html>
